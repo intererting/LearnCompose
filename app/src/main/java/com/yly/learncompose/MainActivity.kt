@@ -5,8 +5,6 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
@@ -18,7 +16,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -38,7 +35,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             LearnComposeTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
+                Surface(
+                    color = MaterialTheme.colors.background,
+                ) {
 //                    HelloScreen()
 //                    OutterComposable.HelloScreen()
                     PasswordTextField()
@@ -155,16 +154,25 @@ fun HelloScreen(viewModels: HelloViewModel = viewModel()) {
 //        mutableStateOf(SaveData(1001))
 //    }
 
-    HelloContent(name = rememberName, saveData = saveable, viewModelState = viewModelState, onValueChange = {
-        viewModels.changeText(it)
-        saveable = SaveData(it)
-        rememberName = it
-    })
+    HelloContent(
+        name = rememberName,
+        saveData = saveable,
+        viewModelState = viewModelState,
+        onValueChange = {
+            viewModels.changeText(it)
+            saveable = SaveData(it)
+            rememberName = it
+        })
 
 }
 
 @Composable
-fun HelloContent(name: String, saveData: SaveData, viewModelState: String, onValueChange: (String) -> Unit) {
+fun HelloContent(
+    name: String,
+    saveData: SaveData,
+    viewModelState: String,
+    onValueChange: (String) -> Unit
+) {
     println("composing")
     Column(Modifier.padding(8.dp)) {
         Text(text = name, modifier = Modifier.padding(6.dp))
