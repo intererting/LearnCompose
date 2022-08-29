@@ -10,9 +10,8 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.LearnCompose">
         <activity
-            android:name=".rememtest.MainActivity"
+            android:name=".RefreshScopeActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.LearnCompose.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
